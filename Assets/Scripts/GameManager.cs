@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
     public Text txtScore;
     public int score = 0;
 
+    [Header("FX Sound")]
+    public AudioSource fxSource;
+    public AudioClip fxPoints;
+
+
     void Start()
     {
         StartCoroutine("SpawnBarril");
@@ -71,6 +76,7 @@ public class GameManager : MonoBehaviour
     {
         score += points;
         txtScore.text = $"Score: {score.ToString()}";
+        fxSource.PlayOneShot(fxPoints);
     }
 
     public void ChangeScene(string target)
