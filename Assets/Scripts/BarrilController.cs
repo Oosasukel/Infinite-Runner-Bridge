@@ -29,7 +29,7 @@ public class BarrilController : MonoBehaviour
         if (!reached && transform.position.x < playerController.transform.position.x)
         {
             reached = true;
-            gameManager.givePoints(1);
+            gameManager.GivePoints(1);
         }
     }
 }

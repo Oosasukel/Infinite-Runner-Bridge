@@ -47,3 +47,6 @@ TagManager:
   - name: Front
     uniqueID: 3580691747
     locked: 0
+  - name: HUD
+    uniqueID: 3935392901
+    locked: 0

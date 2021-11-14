@@ -31,6 +31,6 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D()
     {
-        Debug.LogError("GameOver");
+        gameManager.ChangeScene("GameOver");
     }
 }

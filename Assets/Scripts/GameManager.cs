@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,11 +29,12 @@ public class GameManager : MonoBehaviour
     public GameObject barrilPrefab;
 
     [Header("Globals")]
+    public Text txtScore;
     public int score = 0;
 
     void Start()
     {
-        StartCoroutine("spawnBarril");
+        StartCoroutine("SpawnBarril");
     }
 
     void Update()
@@ -39,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    IEnumerator spawnBarril()
+    IEnumerator SpawnBarril()
     {
         yield return new WaitForSeconds(timeToSpawn);
         float positionY;
@@ -61,11 +64,17 @@ public class GameManager : MonoBehaviour
         barrilInstance.transform.position = new Vector3(barrilInstance.transform.position.x, positionY, 0);
         barrilInstance.GetComponent<SpriteRenderer>().sortingOrder = order;
 
-        StartCoroutine("spawnBarril");
+        StartCoroutine("SpawnBarril");
     }
 
-    public void givePoints(int points)
+    public void GivePoints(int points)
     {
         score += points;
+        txtScore.text = $"Score: {score.ToString()}";
+    }
+
+    public void ChangeScene(string target)
+    {
+        SceneManager.LoadScene(target);
     }
 }
